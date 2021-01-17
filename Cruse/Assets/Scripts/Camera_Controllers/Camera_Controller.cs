@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Camera_Controller : MonoBehaviour
 {
@@ -77,7 +78,7 @@ public class Camera_Controller : MonoBehaviour
                 }
 
             }
-            if(Input.GetAxis("Mouse ScrollWheel") != 0f)
+            if(Input.GetAxis("Mouse ScrollWheel") != 0f && !EventSystem.current.IsPointerOverGameObject() ) // IsPointerOverGameObject is miss leading. It returns true if mouse is over UI fales otherwise.
             {
                 float scrollAmount = Input.GetAxis("Mouse ScrollWheel") * Sensitivity_Scroll;
                 //this is so the scroll zoomes at a defferent rate depending on how far the cam is srolled in or out.
